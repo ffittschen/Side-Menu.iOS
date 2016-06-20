@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04C54FAB1D181A9D00254FBF /* MenuPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C54FAA1D181A9D00254FBF /* MenuPosition.swift */; };
 		50B42F061A6A879C00B05352 /* SideMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 50B42F051A6A879C00B05352 /* SideMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D527A1BB75178BD3056AF143 /* MenuItemsAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527A71BDF077866724721AB /* MenuItemsAnimator.swift */; };
 		D527A273803C14491AA342C3 /* MenuTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527A2A61BB94885601BE108 /* MenuTransitionAnimator.swift */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04C54FAA1D181A9D00254FBF /* MenuPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPosition.swift; sourceTree = "<group>"; };
 		50B42F001A6A879C00B05352 /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B42F041A6A879C00B05352 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B42F051A6A879C00B05352 /* SideMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SideMenu.h; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			children = (
 				50B42F051A6A879C00B05352 /* SideMenu.h */,
 				D527A8F5BB896136B96C89C2 /* Menu.swift */,
+				04C54FAA1D181A9D00254FBF /* MenuPosition.swift */,
 				D527A71BDF077866724721AB /* MenuItemsAnimator.swift */,
 				D527A2A61BB94885601BE108 /* MenuTransitionAnimator.swift */,
 				50B42F031A6A879C00B05352 /* Supporting Files */,
@@ -152,6 +155,7 @@
 				D527A273803C14491AA342C3 /* MenuTransitionAnimator.swift in Sources */,
 				D527A1BB75178BD3056AF143 /* MenuItemsAnimator.swift in Sources */,
 				D527A82567B79C5B10E766A6 /* Menu.swift in Sources */,
+				04C54FAB1D181A9D00254FBF /* MenuPosition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

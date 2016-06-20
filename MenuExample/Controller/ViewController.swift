@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     private var transitionPoint: CGPoint!
     private var contentType: ContentType = .Music
     private var navigator: UINavigationController!
-    lazy private var menuAnimator : MenuTransitionAnimator! = MenuTransitionAnimator(mode: .Presentation, shouldPassEventsOutsideMenu: false) { [unowned self] in
+    lazy private var menuAnimator : MenuTransitionAnimator! = MenuTransitionAnimator(mode: .Presentation, shouldPassEventsOutsideMenu: false, menuPosition: .Right) { [unowned self] in
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -69,7 +69,7 @@ extension ViewController: UIViewControllerTransitioningDelegate {
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return MenuTransitionAnimator(mode: .Dismissal)
+        return MenuTransitionAnimator(mode: .Dismissal, menuPosition: .Right)
     }
 
 }

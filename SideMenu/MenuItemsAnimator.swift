@@ -6,8 +6,8 @@
 
 import UIKit
 
-private func TransformForRotatingLayer(layer: CALayer, angle: CGFloat) -> CATransform3D {
-    let offset = layer.bounds.width / 2
+private func TransformForRotatingLayer(layer: CALayer, angle: CGFloat, position: MenuPosition) -> CATransform3D {
+    let offset = position == .Left ? layer.bounds.width / 2 : -layer.bounds.width / 2
 
     var transform = CATransform3DIdentity
     transform.m34 = -0.002
@@ -24,22 +24,24 @@ class MenuItemsAnimator {
     private let layers: [CALayer]
     private let startAngle: CGFloat
     private let endAngle: CGFloat
+    private let position: MenuPosition
 
-    init(views: [UIView], startAngle: CGFloat, endAngle: CGFloat) {
+    init(views: [UIView], startAngle: CGFloat, endAngle: CGFloat, position: MenuPosition) {
         self.layers = views.map { $0.layer }
         self.startAngle = startAngle
         self.endAngle = endAngle
+        self.position = position
     }
 
     func start() {
         let count = Double(layers.count)
         let duration = self.duration * count / (4 * count - 3)
         for (index, layer) in layers.enumerate() {
-            layer.transform = TransformForRotatingLayer(layer, angle: startAngle)
+            layer.transform = TransformForRotatingLayer(layer, angle: startAngle, position: position)
 
             let delay = 3 * duration * Double(index) / count
             UIView.animateWithDuration(duration, delay: delay, options: .CurveEaseIn, animations: {
-                layer.transform = TransformForRotatingLayer(layer, angle: self.endAngle)
+                layer.transform = TransformForRotatingLayer(layer, angle: self.endAngle, position: self.position)
             }, completion: nil)
         }
 

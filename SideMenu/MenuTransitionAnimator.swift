@@ -15,12 +15,14 @@ public class MenuTransitionAnimator: NSObject {
     private let angle: CGFloat = 2
     private var mode: Mode
     private var shouldPassEventsOutsideMenu : Bool
+    private var position: MenuPosition
     private var tappedOutsideHandler : (() -> Void)?
     
     //MARK: Public methods
-    public init(mode: Mode, shouldPassEventsOutsideMenu: Bool = true, tappedOutsideHandler: (() -> Void)? = nil) {
+    public init(mode: Mode, shouldPassEventsOutsideMenu: Bool = true, menuPosition position: MenuPosition = .Left, tappedOutsideHandler: (() -> Void)? = nil) {
         self.mode = mode
         self.tappedOutsideHandler = tappedOutsideHandler
+        self.position = position
         self.shouldPassEventsOutsideMenu = shouldPassEventsOutsideMenu
         super.init()
     }
@@ -31,7 +33,8 @@ public class MenuTransitionAnimator: NSObject {
         let menu = context.viewControllerForKey(UITransitionContextToViewControllerKey)! 
 
         let view = menu.view
-        view.frame = CGRectMake(0, 0, menu.preferredContentSize.width, host.view.bounds.height)
+        let xPosition: CGFloat = position == .Left ? 0 : UIScreen.mainScreen().bounds.width - menu.preferredContentSize.width
+        view.frame = CGRectMake(xPosition, 0, menu.preferredContentSize.width, host.view.bounds.height)
         view.autoresizingMask = [.FlexibleRightMargin, .FlexibleHeight]
         view.translatesAutoresizingMaskIntoConstraints = true
         
@@ -67,7 +70,7 @@ public class MenuTransitionAnimator: NSObject {
     }
 
     private func animateMenu(menu: Menu, startAngle: CGFloat, endAngle: CGFloat, completion: () -> Void) {
-        let animator = MenuItemsAnimator(views: menu.menuItems, startAngle: startAngle, endAngle: endAngle)
+        let animator = MenuItemsAnimator(views: menu.menuItems, startAngle: startAngle, endAngle: endAngle, position: position)
         animator.duration = duration
         animator.completion = completion
         animator.start()
